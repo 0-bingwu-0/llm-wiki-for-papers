@@ -35,6 +35,7 @@ Connections are what make this a wiki and not a pile of summaries, so keep them 
 * **Compared with**: experiments put the two side by side. Say whose paper reports the numbers.
 * **Evaluated on** / **Benchmark for**: uses the other paper's benchmark or dataset.
 * **Disagrees with**: findings or claims conflict. Say on what.
+* **Critiques** / **Critiqued by**: points out a flaw or gap in the other paper's method or benchmark. Say what.
 * **Alternative to**: tackles the same problem another way, with no direct comparison.
 
 Connections go both ways: when you add one to a page, add its reverse to the other page. Only connect papers that are both in the wiki; important papers that aren't go on the index's reading list.

@@ -25,9 +25,9 @@ Save it to `wiki/papers/<year>-<short-name>.md`:
 ```markdown
 # <Full title>
 
-**Authors:** <First author> et al. (<affiliations as listed>) · **Published:** <venue and year, or "arXiv, Mon YYYY"> · [arXiv <ID>](https://arxiv.org/abs/<ID>) · [PDF](../../library/<year>-<short-name>.pdf)
-**Read:** full paper | abstract only
-**Topics:** [<Topic>](../topics/<topic>.md), ...
+<First author> et al. (<affiliations as listed>) · <venue and year, or "arXiv, Mon YYYY"> · [arXiv <ID>](https://arxiv.org/abs/<ID>) · [PDF](../../library/<year>-<short-name>.pdf) · Read: full paper | abstract only
+
+**Topics:** [<Topic>](../topics/<topic>.md) · ...
 
 <One or two sentences: what it does and what it finds.>
 
