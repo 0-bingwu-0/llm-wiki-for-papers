@@ -11,7 +11,7 @@ A question can be about one paper ("How does Zep decide a fact is outdated?"), s
 
 ## Fold it back
 
-A good answer shouldn't disappear into the chat. When one produces something lasting, such as a new comparison, a connection the pages missed, or a sharper "Where it stands", fold it into the right topic or paper page. When it's a new question that several papers speak to, make it a topic. Tell me in one line what you added.
+A good answer shouldn't disappear into the chat. When one produces something lasting, such as a new comparison, a connection the pages missed, or a sharper "Where it stands", fold it into the right topic or paper page. When it's a new question that several papers speak to, make it a topic. Then update the dashboard's data, as in [maintain.md](maintain.md). Tell me in one line what you added.
 
 Passing questions need none of this. While we're still going back and forth, wait until the discussion settles before writing anything.
 

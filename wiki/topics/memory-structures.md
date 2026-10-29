@@ -2,6 +2,8 @@
 
 What a memory system stores, at what granularity, and how it finds it again.
 
+**Status:** Thin evidence
+
 ## Where it stands
 
 Designs have moved from one flat list of records ranked at read time ([Generative Agents](../papers/2023-generative-agents.md), [MemoryBank](../papers/2023-memorybank.md)) toward structure built at write time: tiers the LLM manages itself ([MemGPT](../papers/2023-memgpt.md)), notes linked to each other ([A-MEM](../papers/2025-a-mem.md)), and facts or graphs extracted from conversations ([Mem0](../papers/2025-mem0.md), [Zep](../papers/2025-zep.md)). Building structure at write time costs LLM calls on every message but keeps reads small: A-MEM and Zep read about 1–3K tokens per question.

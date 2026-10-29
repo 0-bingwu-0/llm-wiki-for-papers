@@ -35,6 +35,7 @@ Save it to `wiki/papers/<year>-<short-name>.md`:
 ## Method
 ## Results
 ## Limits
+## Ideas worth reusing
 ## For my work
 ## Connections
 ```
@@ -43,6 +44,7 @@ Save it to `wiki/papers/<year>-<short-name>.md`:
 * **Method:** the mechanism, specific enough that I could explain it to a labmate without opening the paper. Use the paper's own names for its parts.
 * **Results:** the main findings, each with the paper's own numbers and the setting they belong to. Include an ablation when it shows what actually matters.
 * **Limits:** the limits the authors state, then any you see, labeled "My inference".
+* **Ideas worth reusing:** one to three mechanisms from the paper that could work elsewhere, one line each: `* **<Name>:** <the mechanism, general enough to reuse>`. If one only works under a condition, say so in a sentence, like "Needs strong function calling". When another paper in the wiki has the same idea, use the same name on both pages and mention the other paper.
 * **For my work:** one to three lines on what it means for what I'm working on, as described in profile.md. This part is inference by nature, so it needs no label. If the paper doesn't bear on my work, say so in one line.
 * **Connections:** typed links to other paper pages, one line each. The types are in [AGENTS.md](../AGENTS.md#connections).
 
@@ -65,12 +67,15 @@ A topic page looks like this:
 
 <One or two sentences: the question or theme this topic covers.>
 
+**Status:** Settled | Contested | Thin evidence
+
 ## Where it stands
 ## <A table that lays out the topic>
 ## How the papers connect
 ## Open questions
 ```
 
+* **Status:** Settled when the papers agree on the broad picture, Contested when their results or claims conflict, Thin evidence when there are too few comparable results to say. Update it whenever "Where it stands" changes.
 * **Where it stands:** a few sentences on the picture across the papers: what's settled, what's contested, and where the evidence is thin.
 * **The table:** the topic at a glance, one row per approach, benchmark, or whatever splits the topic best, with the papers in each row. Pick the columns that fit the topic, such as key idea and trade-off for a method topic.
 * **How the papers connect:** the story in order: what came first, who built on whom, who compared with whom and how it came out, where they disagree. Link the papers on every claim.
@@ -80,9 +85,15 @@ A topic page looks like this:
 
 Add the paper to the papers table, and update a topic's line if its picture changed. Update the reading list: add the papers this one builds on most that aren't in the wiki, and take this paper off the list if it was there.
 
+Then check "Where I could dig in": the two to five open questions and limits in the wiki that bear most on "What I'm working on" in profile.md. Each one starts with a bold title of six to eight words that says the gap on its own, then whether it's an open question or a limit, then the full sentence with a link to its topic or paper. Rewrite the list when the new paper answers one, or raises one that matters more.
+
+## Update the dashboard
+
+Last, bring the dashboard's data in line with what you just changed, as in [maintain.md](maintain.md).
+
 ## Many papers at once
 
-For setup or a batch of papers, first read them all and write every paper page without connections. Then go over them together: work out the connections, settle the topics (three to six to start), write the topic pages, and write the index last. Seeing all the papers at once gives better topics than adding them one by one. For more than about ten papers, tell me how many there are before you start.
+For setup or a batch of papers, first read them all and write every paper page without connections. Then go over them together: work out the connections, settle the topics (three to six to start), write the topic pages, then the index, and the dashboard's data last. Seeing all the papers at once gives better topics than adding them one by one. For more than about ten papers, tell me how many there are before you start.
 
 ## Tell me
 

@@ -28,6 +28,11 @@ Companion and counseling chatbots talk to the same user over many days, and LLMs
 * The authors call the forgetting model "exploratory and highly simplified": real forgetting differs by person and by type of information.
 * Forgetting depends on time and recall, not on content. My inference: a fact that has been replaced fades only if nobody asks about it, and asking about the old fact makes it stronger.
 
+## Ideas worth reusing
+
+* **Forgetting curve that recall resets:** Each memory fades as e^(−t/S), and every recall raises its strength S and resets t.
+* **Rolling summaries and user portrait:** Roll daily event summaries and personality insights up into one global summary and one user portrait.
+
 ## For my work
 
 The first design here to treat forgetting as a feature, but its only form of updating is decay. A useful time-based baseline next to the content-based updates in [Mem0](2025-mem0.md) and [Zep](2025-zep.md).

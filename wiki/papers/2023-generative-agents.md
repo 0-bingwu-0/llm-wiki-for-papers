@@ -31,6 +31,11 @@ An LLM can act believably in a single moment, but an agent that lives for days h
 * The authors list three main failure modes: agents fail to retrieve the relevant memory, embellish what they know (hallucinations in 1.3% of 453 answers about other agents), and talk too formally. As memory grows, agents also pick odd places to act.
 * Nothing in the stream is ever updated or removed. My inference: an outdated fact stays forever, and only the recency score pushes it down.
 
+## Ideas worth reusing
+
+* **Three-signal retrieval score:** Rank memories by recency, an importance score the LLM gives at write time, and relevance to the query, each normalized and summed.
+* **Reflect when importance piles up:** When recent records' importance adds up past a threshold, write higher-level insights that cite the records they came from.
+
 ## For my work
 
 The baseline for "keep everything, rank at read time". Recency is measured from the last time a record was retrieved, not when it was written, so an old fact that keeps coming up stays "recent". For changed facts, that's the opposite of what I want.

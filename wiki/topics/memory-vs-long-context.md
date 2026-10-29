@@ -2,6 +2,8 @@
 
 Whether a memory system beats putting the whole history in the model's context, and at what history length.
 
+**Status:** Settled
+
 ## Where it stands
 
 It depends on how long the history is. When the history fits comfortably, full context wins or ties: on DMR (up to 60 messages), full conversation matches [MemGPT](../papers/2023-memgpt.md) and [Zep](../papers/2025-zep.md), and on LoCoMo (about 9K tokens per conversation), [Mem0](../papers/2025-mem0.md) reports full context at 72.90 J against 68.44 for its best variant. At about 115K tokens, [LongMemEval](../papers/2024-longmemeval.md) finds long-context models lose 30.3% (GPT-4o) to 55.1% (Llama 3.1 70B) of their accuracy, and Zep beats full context, 71.2% against 60.2% with gpt-4o.

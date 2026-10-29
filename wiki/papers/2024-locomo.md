@@ -28,6 +28,11 @@ Long-term memory should be tested on conversations that run for months, where fa
 * The authors note the conversations are machine-generated with human edits, so they may miss real-world nuance; the shared web images lack the consistency of personal photos; and the data is English only, built with closed models.
 * There are no questions about facts that change; see the critique from [LongMemEval](2024-longmemeval.md) below.
 
+## Ideas worth reusing
+
+* **Conversations grounded in an event graph:** Generate months-long conversations from personas and a causal graph of life events, so every question has ground truth.
+* **Retrieve observations, not turns:** Index assertions extracted about each speaker; on LoCoMo they retrieve better than raw turns or session summaries.
+
 ## For my work
 
 Results on LoCoMo say little about updates, because no question type targets a changed fact; temporal questions are the closest. Worth keeping in mind whenever a paper reports LoCoMo as evidence that its memory "stays current".

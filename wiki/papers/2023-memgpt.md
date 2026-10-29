@@ -28,6 +28,11 @@ Context windows have a fixed size, so long conversations and large document coll
 * The authors report much worse results with GPT-3.5, because of its weaker function calling, and that MemGPT often stops paging through retriever results before reaching the end.
 * My inference: everything depends on the LLM's judgment about what to save, overwrite, and search; nothing checks those decisions.
 
+## Ideas worth reusing
+
+* **Context the LLM manages itself:** The LLM moves information between a small main context and external storage through function calls. Needs strong function calling: results were much worse with GPT-3.5.
+* **Memory-pressure warning:** Warn the model at 70% of the context window so it saves what matters before old messages are evicted and summarized.
+
 ## For my work
 
 MemGPT gives the LLM the tools to overwrite a changed fact in working context, but has no rule for when, and DMR doesn't test it: each question asks about a fact stated once.

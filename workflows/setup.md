@@ -13,5 +13,5 @@ Then, in one go:
 
 * Rewrite [profile.md](../context/profile.md) from my answers, in my own words, under its headings. Drop the example content. Keep it short and specific.
 * Delete the example wiki: every page in [wiki/papers/](../wiki/papers/) and [wiki/topics/](../wiki/topics/). They were written for the example setup.
-* Build the wiki from my papers, following "Many papers at once" in [add.md](add.md). This rewrites [index.md](../wiki/index.md) for my area.
-* Tell me it's done in a few sentences: how many papers, which topics came out, and the one connection or disagreement that stands out most. Link the index. Then offer three ways to go on: add more papers, ask a question, or start on the reading list.
+* Build the wiki from my papers, following "Many papers at once" in [add.md](add.md). This rewrites [index.md](../wiki/index.md) for my area, and replaces the example in the dashboard's data, as in [maintain.md](maintain.md).
+* Tell me it's done in a few sentences: how many papers, which topics came out, and the one connection or disagreement that stands out most. Link the index, and tell me the dashboard, `index.html`, shows the same wiki as a map. Then offer three ways to go on: add more papers, ask a question, or start on the reading list.

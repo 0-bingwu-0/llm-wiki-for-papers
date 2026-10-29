@@ -31,6 +31,12 @@ Earlier benchmarks are short or leave out key abilities. By the paper's comparis
 * The paper has no limitations section. Its ethics statement flags the privacy risk of storing and recalling user information.
 * Filler sessions are chosen not to conflict with the evidence. My inference: each knowledge-update question tests one planted change, not a fact that changes again and again.
 
+## Ideas worth reusing
+
+* **Fact-augmented keys:** Index each round together with the facts extracted from it, so retrieval can match on facts, not just wording.
+* **Time-aware query expansion:** Narrow retrieval to the time range a question implies before searching.
+* **Evidence hidden among filler sessions:** Scale a test history by hiding the evidence sessions among filler sessions that don't conflict with them.
+
 ## For my work
 
 The only benchmark in the wiki with knowledge-update questions, so it's where any claim about handling changed facts should be tested. Time-aware query expansion is a direct lead for answering "when was this true".

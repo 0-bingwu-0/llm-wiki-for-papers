@@ -2,6 +2,15 @@
 
 How LLM agents keep, use, and lose information over long interactions. The papers here run from the first memory designs (2023), through benchmarks for long conversations (2024), to systems that extract facts and graphs as conversations come in (2025). The open question that matters most for my work: whether explicit update mechanisms handle changed facts better, which no paper here tests head to head.
 
+## Where I could dig in
+
+Open questions and limits in the wiki that bear on what I'm working on:
+
+* **Retire, delete, or decay: never compared** (open question). Does retiring a fact beat deleting it or letting it decay on knowledge-update questions, with the same model and judge? No paper compares them. See [Updating and forgetting](topics/updating-and-forgetting.md).
+* **No one measures misjudged contradictions** (open question). How often does the LLM misjudge a contradiction, deleting a fact that still holds or missing a real change? No paper measures the update step on its own. See [Updating and forgetting](topics/updating-and-forgetting.md).
+* **Facts that change repeatedly go untested** (limit). Each knowledge-update question in [LongMemEval](papers/2024-longmemeval.md) plants one change. A fact that changes again and again isn't tested by any benchmark here.
+* **Zep's update gains rest on thin evidence** (limit). [Zep](papers/2025-zep.md), the only system tested on update questions, is compared only with full context, and its gains are mixed across models.
+
 ## Topics
 
 | Topic | Where it stands |

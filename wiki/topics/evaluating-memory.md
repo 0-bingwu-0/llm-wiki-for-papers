@@ -2,6 +2,8 @@
 
 Which benchmarks the papers use, what each one tests, and which results can be compared.
 
+**Status:** Contested
+
 ## Where it stands
 
 Each system paper picks a different benchmark, so there is almost no head-to-head evidence. [MemGPT](../papers/2023-memgpt.md) introduced DMR, which [Zep](../papers/2025-zep.md) later called too weak: full conversation already scores 94.4–98.0% on it. [LoCoMo](../papers/2024-locomo.md), used by [A-MEM](../papers/2025-a-mem.md) and [Mem0](../papers/2025-mem0.md), has long conversations by turn count but only about 9K tokens each, and no knowledge-update questions. [LongMemEval](../papers/2024-longmemeval.md) is the hardest and the only one that tests updates and abstention, but only Zep reports on it.

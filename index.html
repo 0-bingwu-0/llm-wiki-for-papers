@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Wiki</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --text: #37352f;
+    --muted: rgba(55, 53, 47, 0.65);
+    --faint: rgba(55, 53, 47, 0.45);
+    --line: rgba(55, 53, 47, 0.09);
+    --line-strong: rgba(55, 53, 47, 0.22);
+    --hover: rgba(55, 53, 47, 0.06);
+    --hover-soft: rgba(55, 53, 47, 0.03);
+    --pop: #ffffff;
+    --pop-shadow: rgba(15, 15, 15, 0.05) 0 0 0 1px, rgba(15, 15, 15, 0.1) 0 3px 6px, rgba(15, 15, 15, 0.2) 0 9px 24px;
+    /* The colors every gallery dashboard shares: coral, yellow, and green, plus the blue that is this banner's background
+       (Workout Tracker's banner is teal instead). Headings, tags, and charts use only these, plus gray; red marks a disagreement. */
+    --c-coral: rgba(229, 130, 131, 0.42); --c-yellow: rgba(242, 228, 157, 0.5); --c-green: rgba(206, 231, 170, 0.5); --c-blue: rgba(166, 203, 232, 0.5);
+    --c-gray: #f1f1ef;
+    --t-gray: rgba(227, 226, 224, 0.6); --f-gray: #32302c; --d-gray: #91918e;
+    --t-red: #ffe2dd; --f-red: #5d1715; --d-red: #d44c47;
+    --t-coral: rgba(229, 130, 131, 0.3); --f-coral: #6b2a2b; --d-coral: #d9686a;
+    --t-yellow: rgba(242, 228, 157, 0.65); --f-yellow: #5c4d12; --d-yellow: #cfb23a;
+    --t-green: rgba(206, 231, 170, 0.7); --f-green: #35501a; --d-green: #86b856;
+    --t-blue: rgba(166, 203, 232, 0.55); --f-blue: #183347; --d-blue: #5b97bd;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --bg: #191919;
+      --text: rgba(255, 255, 255, 0.81);
+      --muted: rgba(255, 255, 255, 0.5);
+      --faint: rgba(255, 255, 255, 0.3);
+      --line: rgba(255, 255, 255, 0.094);
+      --line-strong: rgba(255, 255, 255, 0.22);
+      --hover: rgba(255, 255, 255, 0.055);
+      --hover-soft: rgba(255, 255, 255, 0.03);
+      --pop: #252525;
+      --pop-shadow: rgba(255, 255, 255, 0.08) 0 0 0 1px, rgba(0, 0, 0, 0.3) 0 3px 6px, rgba(0, 0, 0, 0.45) 0 9px 24px;
+      --c-coral: rgba(229, 130, 131, 0.24); --c-yellow: rgba(242, 228, 157, 0.2); --c-green: rgba(206, 231, 170, 0.2); --c-blue: rgba(166, 203, 232, 0.2);
+      --c-gray: #262626;
+      --t-gray: #3f4245; --t-red: #5c2b27;
+      --t-coral: rgba(229, 130, 131, 0.26); --t-yellow: rgba(242, 228, 157, 0.2); --t-green: rgba(206, 231, 170, 0.2); --t-blue: rgba(166, 203, 232, 0.22);
+      --f-gray: rgba(255, 255, 255, 0.86); --f-red: var(--f-gray);
+      --f-coral: var(--f-gray); --f-yellow: var(--f-gray); --f-green: var(--f-gray); --f-blue: var(--f-gray);
+      --d-gray: #8f8f8f; --d-red: #e06c64;
+      --d-coral: #e58283; --d-yellow: #f2e49d; --d-green: #cee7aa; --d-blue: #a6cbe8;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(35, 131, 226, 0.28); }
+  [hidden] { display: none !important; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; padding: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid rgba(35, 131, 226, 0.6); outline-offset: 1px; border-radius: 4px; }
+  .i { width: 14px; height: 14px; flex: none; }
+  .muted { color: var(--muted); }
+
+  /* Error notice: hidden unless the data can't load or the script fails */
+  .toast { position: fixed; right: 16px; bottom: 16px; z-index: 60; display: flex; align-items: center; gap: 8px; max-width: calc(100vw - 32px); padding: 8px 12px; border-radius: 6px; background: var(--pop); box-shadow: var(--pop-shadow); color: var(--d-red); font-size: 14px; }
+  .toast button { height: 26px; padding: 0 8px; border-radius: 4px; color: var(--text); }
+  .toast button:hover { background: var(--hover); }
+
+  /* Short Notion-style banner; the icon overlaps its bottom edge by half */
+  .banner { position: relative; height: clamp(150px, 16vw, 220px); overflow: hidden; background: var(--c-blue); }
+  .banner img { position: absolute; inset: 0; display: block; width: 92%; max-width: 1320px; height: 100%; margin-inline: auto; object-fit: cover; object-position: center 54%; }
+  .banner ~ .page .page-icon { position: relative; z-index: 1; margin-top: -52px; }
+
+  .page { max-width: 1400px; margin: 0 auto; padding: 0 72px 120px; }
+  .page-icon { display: block; width: 104px; height: 104px; margin: 44px 0 0 -4px; font-size: 88px; line-height: 104px; user-select: none; }
+  .title { margin: 18px 0 14px; font-size: 40px; font-weight: 700; line-height: 1.2; }
+  /* Header: title and focus on the left; on the right, a sticky note with what to say in Chat, pinned like the notes in the banner */
+  .head { display: grid; grid-template-columns: minmax(0, 66fr) minmax(0, 34fr); gap: 40px; align-items: start; margin: 0 0 30px; }
+  .head-main { min-width: 0; }
+  .head-main .title { margin-bottom: 14px; }
+  .callout.focus { display: inline-flex; max-width: 100%; }
+  .note { position: relative; margin-top: -4px; padding: 14px 16px 12px; border-radius: 4px; background: #fffaf0; color: #3d3a32; box-shadow: 0 0 0 1px rgba(60, 50, 20, 0.08), 0 6px 16px rgba(60, 50, 20, 0.1); }
+  .note::before { content: ""; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; border-radius: 50%; background: #d9686a; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); transform: translateX(-50%); }
+  .note h3 { margin: 0 0 6px; color: var(--muted); font-size: 12px; font-weight: 600; }
+  .note p { margin: 0; font-size: 14px; line-height: 1.4; }
+  .note p + p { margin-top: 6px; }
+  .note strong { font-weight: 600; }
+  .note span { color: var(--muted); }
+  .columns { display: grid; grid-template-columns: minmax(0, 66fr) minmax(0, 34fr); gap: 40px; align-items: start; }
+  .col { min-width: 0; }
+  .section + .section { margin-top: 44px; }
+
+  /* Callouts */
+  .callout { display: flex; align-items: center; gap: 10px; padding: 12px 16px 12px 14px; border-radius: 6px; background: var(--c-gray); }
+  .callout.coral { background: var(--c-coral); }
+  .callout.yellow { background: var(--c-yellow); }
+  .callout.green { background: var(--c-green); }
+  .callout.blue { background: var(--c-blue); }
+  .callout h2 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.3; }
+  .callout p { margin: 0; }
+  .emoji { width: 22px; flex: none; font-size: 18px; line-height: 1; text-align: center; }
+  .desc { margin: 10px 2px 6px; color: var(--muted); font-size: 14px; }
+  /* A table right under a heading callout keeps the same gap as one under a toolbar */
+  .callout + #topics { margin-top: 12px; }
+
+  /* Tags and chips */
+  .tag { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; height: 20px; padding: 0 6px; border-radius: 3px; background: var(--tb); color: var(--tf); font-size: 12px; line-height: 20px; white-space: nowrap; }
+  .tag.status { padding: 0 8px 0 7px; border-radius: 10px; }
+  .tag.status::before { content: ""; width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--td); }
+  .k-gray { --tb: var(--t-gray); --tf: var(--f-gray); --td: var(--d-gray); }
+  .k-red { --tb: var(--t-red); --tf: var(--f-red); --td: var(--d-red); }
+  .k-coral { --tb: var(--t-coral); --tf: var(--f-coral); --td: var(--d-coral); }
+  .k-yellow { --tb: var(--t-yellow); --tf: var(--f-yellow); --td: var(--d-yellow); }
+  .k-green { --tb: var(--t-green); --tf: var(--f-green); --td: var(--d-green); }
+  .k-blue { --tb: var(--t-blue); --tf: var(--f-blue); --td: var(--d-blue); }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+  .chip { display: inline-flex; align-items: center; height: 22px; padding: 0 7px; border-radius: 4px; background: var(--hover); font-size: 13px; white-space: nowrap; text-decoration: none; }
+  .chip:hover { background: var(--line-strong); }
+  .link { border-bottom: 1px solid var(--line-strong); text-decoration: none; }
+  .link:hover { border-bottom-color: var(--text); }
+
+  /* Tables */
+  .tbl-scroll { overflow-x: auto; }
+  table.db { min-width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.db th { height: 34px; padding: 0 8px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-weight: 400; text-align: left; white-space: nowrap; }
+  table.db td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.db th + th, table.db td + td { border-left: 1px solid var(--line); }
+  .th { display: inline-flex; align-items: center; gap: 6px; }
+  .th .i { color: var(--faint); }
+  .aa { color: var(--faint); font-size: 12px; font-weight: 600; }
+  td.name { min-width: 150px; font-weight: 500; }
+  td.name .year { margin-left: 8px; color: var(--faint); font-weight: 400; }
+  td.point { min-width: 240px; }
+  td.nowrap { white-space: nowrap; }
+  .dbbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 8px; min-height: 36px; margin: 10px 0 2px; }
+  .tab { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 14px; font-size: 14px; color: var(--muted); white-space: nowrap; }
+  .tab:hover { background: var(--hover); }
+  .search { width: 170px; height: 28px; padding: 0 8px; border: 0; border-radius: 4px; background: var(--hover-soft); outline: none; font-size: 14px; }
+  .search::placeholder { color: var(--faint); }
+
+  /* Papers: clicking a row (not its links) marks how the other papers relate to it, and dims the rest */
+  #papers tr.row { cursor: pointer; }
+  #papers tr.row:hover td { background: var(--hover-soft); }
+  .rel-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  tr.selected td, tr.selected:hover td { background: var(--c-blue); }
+  tr.dim { opacity: 0.4; }
+
+  /* Progress */
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 12px 0 8px; }
+  .stat { min-width: 0; padding: 8px 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+  .stat span { display: block; color: var(--muted); font-size: 12px; }
+  .stat b { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .growth { margin: 10px 2px 0; }
+  .growth-head { color: var(--muted); font-size: 12px; }
+  .growth svg { display: block; width: 100%; height: auto; margin-top: 4px; overflow: visible; }
+  .gr-area { fill: var(--c-blue); }
+  .gr-line { fill: none; stroke: var(--d-blue); stroke-width: 2; stroke-linejoin: round; }
+  .gr-dot { fill: var(--d-blue); stroke: var(--bg); stroke-width: 1.5; }
+  .gr-total { fill: var(--text); font-size: 12px; font-weight: 600; }
+  .gr-axis { fill: var(--faint); font-size: 10px; }
+
+  /* Read next */
+  .rows { margin-top: 8px; border-top: 1px solid var(--line); }
+  .row-item { padding: 10px 6px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .row-meta { margin-top: 4px; font-size: 14px; }
+  .clamp1 { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .clamp2 { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+  @media (max-width: 1040px) {
+    .columns, .head { grid-template-columns: minmax(0, 1fr); }
+    .page { padding: 0 40px 96px; }
+  }
+  @media (max-width: 640px) {
+    .page { padding: 0 18px 80px; }
+    .title { font-size: 32px; }
+    .banner { height: clamp(96px, 24vw, 120px); }
+    .banner ~ .page .page-icon { width: 80px; height: 80px; margin-top: -40px; font-size: 68px; line-height: 80px; }
+  }
+</style>
+</head>
+<body>
+  <div class="toast" id="toast" hidden>
+    <span id="toast-text" role="status" aria-live="polite"></span>
+    <button type="button" id="toast-close" aria-label="Close" title="Close">×</button>
+  </div>
+
+  <section class="banner" aria-label="Illustration of a research desk with books, a magnifying glass, and linked notes">
+    <img src="./assets/banner.png" width="2171" height="724" alt="" fetchpriority="high" decoding="async">
+  </section>
+
+  <main class="page">
+    <div class="page-icon" role="img" aria-label="Open book">📖</div>
+    <div class="head">
+      <div class="head-main">
+        <h1 class="title" id="area"></h1>
+        <div class="callout focus" id="focus"></div>
+      </div>
+      <aside class="note" id="start" aria-label="What to say in Chat"></aside>
+    </div>
+
+    <div class="columns">
+      <div class="col">
+        <section class="section" aria-labelledby="h-topics">
+          <div class="callout coral"><span class="emoji" aria-hidden="true">🗺️</span><h2 id="h-topics">Topics</h2></div>
+          <div id="topics"></div>
+        </section>
+
+        <section class="section" aria-labelledby="h-papers">
+          <div class="callout blue"><span class="emoji" aria-hidden="true">📄</span><h2 id="h-papers">Papers</h2></div>
+          <div class="dbbar">
+            <input class="search" id="paper-search" type="search" placeholder="Search papers…" aria-label="Search papers">
+            <button type="button" class="tab" id="paper-sort"></button>
+          </div>
+          <div id="papers"></div>
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="section" aria-labelledby="h-progress">
+          <div class="callout yellow"><span class="emoji" aria-hidden="true">📈</span><h2 id="h-progress">Progress</h2></div>
+          <div id="progress"></div>
+        </section>
+
+        <section class="section" aria-labelledby="h-next">
+          <div class="callout green"><span class="emoji" aria-hidden="true">📚</span><h2 id="h-next">Read next</h2></div>
+          <div class="rows" id="next"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+<script>
+(() => {
+  "use strict";
+
+  // The dashboard is an index of the wiki. Everything it shows is a short version of the pages,
+  // and every name links to its page: StashBase opens a relative link to a page in a new tab.
+  const DATA_PATH = "./assets/wiki.json";
+  const STATUS = {
+    settled: { label: "Settled", k: "green" },
+    contested: { label: "Contested", k: "coral" },
+    thin: { label: "Thin evidence", k: "yellow" },
+  };
+  // Each connection is stored once, from one paper to another. `reverse` is how it reads from the other paper.
+  const CONN = {
+    "builds-on": { label: "Builds on", reverse: "Built on by", k: "blue" },
+    "compared-with": { label: "Compared with", reverse: "Compared with", k: "gray" },
+    "evaluated-on": { label: "Evaluated on", reverse: "Benchmark for", k: "green" },
+    "critiques": { label: "Critiques", reverse: "Critiqued by", k: "yellow" },
+    "disagrees-with": { label: "Disagrees with", reverse: "Disagrees with", k: "red" },
+    "alternative-to": { label: "Alternative to", reverse: "Alternative to", k: "gray" },
+  };
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const PATHS = {
+    list: '<path d="M6 4.5h7.5M6 8h7.5M6 11.5h7.5M2.8 4.5h.4M2.8 8h.4M2.8 11.5h.4"/>',
+    status: '<circle cx="8" cy="8" r="5.8"/><circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>',
+    sort: '<path d="M5 13V3M2.5 5.5 5 3l2.5 2.5M11 3v10M8.5 10.5 11 13l2.5-2.5"/>',
+    file: '<path d="M4 2h5l3 3v9H4z M9 2v3h3"/>',
+  };
+  const icon = (name) => `<svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PATHS[name]}</svg>`;
+
+  const $ = (selector) => document.querySelector(selector);
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const isObj = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+  const arr = (value) => (Array.isArray(value) ? value : []);
+  const str = (value) => (typeof value === "string" ? value : "");
+  const isDate = (s) => typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s);
+  const tag = (o, status) => `<span class="tag${status ? " status" : ""} k-${o.k}">${esc(o.label)}</span>`;
+  const paperHref = (id) => `wiki/papers/${encodeURIComponent(id)}.md`;
+  const topicHref = (id) => `wiki/topics/${encodeURIComponent(id)}.md`;
+
+  function normalize(raw) {
+    const src = isObj(raw) ? raw : {};
+    // `order` keeps the data's own order, which is publication order, for papers from the same year.
+    const papers = arr(src.papers).filter(isObj).map((p, order) => ({
+      ...p,
+      order,
+      id: str(p.id),
+      title: str(p.title) || str(p.id),
+      year: Number.isFinite(p.year) ? p.year : null,
+      added: isDate(p.added) ? p.added : "",
+      topics: arr(p.topics).filter((t) => typeof t === "string"),
+      oneLine: str(p.oneLine),
+    })).filter((p) => p.id);
+    const ids = new Set(papers.map((p) => p.id));
+    return {
+      ...src,
+      area: str(src.area) || "Research wiki",
+      example: src.example === true,
+      focus: str(src.focus),
+      papers,
+      topics: arr(src.topics).filter(isObj).map((t) => ({ ...t, id: str(t.id), name: str(t.name) || str(t.id), status: STATUS[t.status] ? t.status : "thin", standing: str(t.standing) })).filter((t) => t.id),
+      connections: arr(src.connections).filter((c) => isObj(c) && ids.has(c.from) && ids.has(c.to) && CONN[c.type]).map((c) => ({ ...c, note: str(c.note) })),
+      readingList: arr(src.readingList).filter(isObj).map((r) => ({ ...r, title: str(r.title), authors: str(r.authors), url: str(r.url), why: str(r.why) })).filter((r) => r.title),
+    };
+  }
+
+  let data = normalize({});
+  let paperQuery = "";
+  let paperSort = 1;
+  let selected = null;
+
+  const paperById = (id) => data.papers.find((p) => p.id === id);
+  const topicById = (id) => data.topics.find((t) => t.id === id);
+  const papersIn = (topicId) => data.papers.filter((p) => p.topics.includes(topicId));
+  const byYear = (a, b) => (a.year ?? 0) - (b.year ?? 0) || a.order - b.order;
+
+  function render() {
+    document.title = data.area;
+    $("#area").textContent = data.area;
+    $("#focus").innerHTML = data.focus
+      ? `<span class="emoji" aria-hidden="true">🎯</span><p><strong>What I'm working on:</strong> ${esc(data.focus)}</p>`
+      : "";
+    $("#focus").hidden = !data.focus;
+    // "Set me up" only while the template's example is still here; adding papers stays.
+    const steps = [
+      data.example && ["Set me up.", "Swap this example for your own area and papers."],
+      ["Add the new papers.", "Drop PDFs into library/ first, or paste arXiv links."],
+    ].filter(Boolean);
+    $("#start").innerHTML = `<h3>Say in Chat</h3>${steps.map(([say, what]) => `<p><strong>“${esc(say)}”</strong> <span>${esc(what)}</span></p>`).join("")}`;
+    renderTopics();
+    renderPapers();
+    renderProgress();
+    renderNext();
+  }
+
+  // One row per topic: how settled it is and which papers speak to it.
+  function renderTopics() {
+    $("#topics").innerHTML = `<div class="tbl-scroll"><table class="db">
+      <thead><tr>
+        <th><span class="th"><span class="aa">Aa</span>Topic</span></th>
+        <th><span class="th">${icon("status")}Status</span></th>
+        <th><span class="th">${icon("file")}Papers</span></th>
+      </tr></thead>
+      <tbody>${data.topics.map((t) => `<tr>
+        <td class="name"><a class="link" href="${topicHref(t.id)}" title="${esc(t.standing)}">${esc(t.name)}</a></td>
+        <td class="nowrap">${tag(STATUS[t.status], true)}</td>
+        <td><div class="chips">${papersIn(t.id).sort(byYear).map((p) => `<a class="chip" href="${paperHref(p.id)}">${esc(p.title)}</a>`).join("")}</div></td>
+      </tr>`).join("") || '<tr><td colspan="3" class="muted">No topics yet</td></tr>'}</tbody>
+    </table></div>`;
+  }
+
+  // How every other paper relates to one paper, read from that paper's side.
+  function relationsTo(id) {
+    const out = new Map();
+    const add = (other, c, label) => (out.get(other) || out.set(other, []).get(other)).push({ label, k: CONN[c.type].k, note: c.note });
+    for (const c of data.connections) {
+      if (c.from === id) add(c.to, c, CONN[c.type].label);
+      else if (c.to === id) add(c.from, c, CONN[c.type].reverse);
+    }
+    return out;
+  }
+
+  // One row per paper: its main point and the topics it speaks to.
+  function renderPapers() {
+    $("#paper-sort").innerHTML = `${icon("sort")}${paperSort > 0 ? "Oldest first" : "Newest first"}`;
+    const q = paperQuery.trim().toLowerCase();
+    const list = data.papers
+      .filter((p) => !q || [p.title, p.oneLine].some((s) => s.toLowerCase().includes(q)))
+      .sort((a, b) => paperSort * byYear(a, b));
+    if (selected && !paperById(selected)) selected = null;
+    const rel = selected ? relationsTo(selected) : new Map();
+    const rows = list.map((p) => {
+      const state = !selected ? "" : p.id === selected ? " selected" : rel.has(p.id) ? "" : " dim";
+      const tags = rel.get(p.id) || [];
+      return `<tr class="row${state}" tabindex="0" data-paper="${esc(p.id)}" aria-pressed="${p.id === selected}">
+        <td class="name"><a class="link" href="${paperHref(p.id)}">${esc(p.title)}</a><span class="year">${p.year ?? ""}</span>${tags.length ? `<div class="rel-tags">${tags.map((t) => `<span title="${esc(t.note)}">${tag(t)}</span>`).join("")}</div>` : ""}</td>
+        <td class="point">${esc(p.oneLine)}</td>
+        <td><div class="chips">${p.topics.map((id) => topicById(id) ? `<a class="chip" href="${topicHref(id)}">${esc(topicById(id).name)}</a>` : "").join("")}</div></td>
+      </tr>`;
+    }).join("");
+    $("#papers").innerHTML = `<div class="tbl-scroll"><table class="db">
+      <thead><tr>
+        <th><span class="th"><span class="aa">Aa</span>Paper</span></th>
+        <th><span class="th">${icon("list")}Main point</span></th>
+        <th><span class="th">${icon("status")}Topics</span></th>
+      </tr></thead>
+      <tbody>${rows || '<tr><td colspan="3" class="muted">No papers match</td></tr>'}</tbody>
+    </table></div>`;
+  }
+
+  // Total papers in the wiki over time: one point for each day papers were added.
+  function growth() {
+    const dates = data.papers.map((p) => p.added).filter(Boolean).sort();
+    const points = [];
+    dates.forEach((date, i) => {
+      const last = points[points.length - 1];
+      if (last && last.date === date) last.total = i + 1;
+      else points.push({ date, total: i + 1 });
+    });
+    return points;
+  }
+
+  function growthSvg(points) {
+    if (!points.length) return "";
+    const w = 320, h = 96, padX = 6, top = 16, bottom = 20;
+    const time = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d).getTime(); };
+    const t0 = time(points[0].date);
+    const t1 = time(points[points.length - 1].date);
+    const max = points[points.length - 1].total;
+    const x = (s) => (t1 === t0 ? w / 2 : padX + ((time(s) - t0) / (t1 - t0)) * (w - 2 * padX));
+    const y = (n) => top + (1 - n / max) * (h - top - bottom);
+    const line = points.map((p) => `${x(p.date).toFixed(1)},${y(p.total).toFixed(1)}`).join(" ");
+    const base = h - bottom;
+    const label = (s) => { const [, m, d] = s.split("-").map(Number); return `${MONTHS[m - 1]} ${d}`; };
+    const end = points[points.length - 1];
+    return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${max} papers by ${label(end.date)}">
+      <polygon class="gr-area" points="${x(points[0].date).toFixed(1)},${base} ${line} ${x(end.date).toFixed(1)},${base}"/>
+      <polyline class="gr-line" points="${line}"/>
+      ${points.map((p) => `<circle class="gr-dot" cx="${x(p.date).toFixed(1)}" cy="${y(p.total).toFixed(1)}" r="3"><title>${label(p.date)}: ${p.total}</title></circle>`).join("")}
+      <text class="gr-total" x="${x(end.date).toFixed(1)}" y="${(y(end.total) - 7).toFixed(1)}" text-anchor="end">${max}</text>
+      <text class="gr-axis" x="${padX}" y="${h - 4}">${label(points[0].date)}</text>
+      ${points.length > 1 ? `<text class="gr-axis" x="${w - padX}" y="${h - 4}" text-anchor="end">${label(end.date)}</text>` : ""}
+    </svg>`;
+  }
+
+  function renderProgress() {
+    const points = growth();
+    $("#progress").innerHTML = `<div class="stats">
+        <div class="stat"><span>Papers</span><b>${data.papers.length}</b></div>
+        <div class="stat"><span>Topics</span><b>${data.topics.length}</b></div>
+        <div class="stat"><span>Connections</span><b>${data.connections.length}</b></div>
+      </div>
+      ${points.length ? `<div class="growth"><div class="growth-head">Papers over time</div>${growthSvg(points)}</div>` : ""}`;
+  }
+
+  function renderNext() {
+    $("#next").innerHTML = data.readingList.map((r) => `<div class="row-item">
+        <span class="clamp1" title="${esc(r.title)}">${r.url ? `<a class="link" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}</span>
+        <div class="row-meta muted clamp2">${r.authors ? `${esc(r.authors)} · ` : ""}${esc(r.why)}</div>
+      </div>`).join("") || '<p class="desc">Nothing on the list yet.</p>';
+  }
+
+  // Clicking a paper row (anywhere but its links) marks its connections; clicking it again, or elsewhere, clears them.
+  function select(id) {
+    selected = selected === id ? null : id;
+    renderPapers();
+  }
+  $("#papers").addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    const row = event.target.closest("tr[data-paper]");
+    if (!row) return;
+    // The row is re-rendered, so stop here: the page-wide handler below would see a detached target and clear it.
+    event.stopPropagation();
+    select(row.dataset.paper);
+  });
+  document.addEventListener("click", (event) => {
+    if (selected && !event.target.closest(".dbbar")) {
+      selected = null;
+      renderPapers();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && selected) {
+      selected = null;
+      return renderPapers();
+    }
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const row = event.target.closest?.("tr[data-paper]");
+    if (!row || event.target !== row) return;
+    event.preventDefault();
+    select(row.dataset.paper);
+  });
+  $("#paper-sort").addEventListener("click", () => {
+    paperSort = -paperSort;
+    renderPapers();
+  });
+  $("#paper-search").addEventListener("input", (event) => {
+    paperQuery = event.target.value;
+    renderPapers();
+  });
+
+  /* ---------- Start ---------- */
+
+  // There's no console in StashBase, so problems show at the bottom right, ready to pass on.
+  function showProblem(message) {
+    $("#toast-text").textContent = message;
+    $("#toast").hidden = false;
+  }
+  const lineOf = (stack) => /:(\d+):\d+\)?\s*$/m.exec(String(stack || "").split("\n")[1] || "")?.[1];
+  addEventListener("error", (event) => {
+    if (/ResizeObserver loop/i.test(event.message || "")) return;
+    const line = event.lineno || lineOf(event.error?.stack);
+    showProblem(`Page error: ${event.message || "unknown error"}${line ? ` (line ${line})` : ""}`);
+  });
+  addEventListener("unhandledrejection", (event) => {
+    const reason = event.reason;
+    const line = lineOf(reason?.stack);
+    showProblem(`Page error: ${reason?.message || reason}${line ? ` (line ${line})` : ""}`);
+  });
+  $("#toast-close").addEventListener("click", () => {
+    $("#toast").hidden = true;
+  });
+
+  async function start() {
+    const api = window.stashbase?.data;
+    try {
+      // The page only reads. The Agent keeps the data current; StashBase reloads the page when it changes.
+      if (api && typeof api.load === "function") data = normalize(await api.load(DATA_PATH));
+      else {
+        const response = await fetch(DATA_PATH);
+        if (response.ok) data = normalize(await response.json());
+      }
+    } catch (error) {
+      showProblem(`Couldn't load the wiki data: ${error?.message || error}`);
+    }
+    render();
+  }
+
+  start();
+})();
+</script>
+</body>
+</html>

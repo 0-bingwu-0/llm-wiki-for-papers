@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "example": true,
+  "area": "Agent memory",
+  "focus": "Memory that stays correct when facts change.",
+  "topics": [
+    {"id": "memory-structures", "name": "How memory is organized", "status": "thin", "standing": "Designs moved from flat lists ranked at read time to structure built at write time. No same-condition test of which structure matters."},
+    {"id": "updating-and-forgetting", "name": "Updating and forgetting", "status": "thin", "standing": "Mem0 and Zep make updates explicit, but only Zep is tested on knowledge-update questions, with mixed results."},
+    {"id": "evaluating-memory", "name": "Evaluating memory", "status": "contested", "standing": "Each system uses a different benchmark, and even on shared ones the papers disagree on labels and re-run scores."},
+    {"id": "memory-vs-long-context", "name": "Memory vs. long context", "status": "settled", "standing": "Full context wins or ties on short histories; memory wins at about 115K tokens, and on latency everywhere."}
+  ],
+  "papers": [
+    {"id": "2023-generative-agents", "title": "Generative Agents", "year": 2023, "added": "2026-10-06", "topics": ["memory-structures", "updating-and-forgetting"], "oneLine": "A memory stream ranked by recency, importance, and relevance, plus reflection."},
+    {"id": "2023-memorybank", "title": "MemoryBank", "year": 2023, "added": "2026-10-06", "topics": ["memory-structures", "updating-and-forgetting", "evaluating-memory"], "oneLine": "Summaries, a user portrait, and an Ebbinghaus forgetting curve for companion chat."},
+    {"id": "2023-memgpt", "title": "MemGPT", "year": 2023, "added": "2026-10-07", "topics": ["memory-structures", "updating-and-forgetting", "evaluating-memory", "memory-vs-long-context"], "oneLine": "The LLM pages memory between its context and external storage, like an OS; introduces DMR."},
+    {"id": "2024-locomo", "title": "LoCoMo", "year": 2024, "added": "2026-10-13", "topics": ["evaluating-memory", "memory-vs-long-context"], "oneLine": "Benchmark of 50 months-long conversations; models fall far behind humans on temporal questions."},
+    {"id": "2024-longmemeval", "title": "LongMemEval", "year": 2024, "added": "2026-10-20", "topics": ["evaluating-memory", "updating-and-forgetting", "memory-structures", "memory-vs-long-context"], "oneLine": "Benchmark of 500 questions over ~115K-token histories, including knowledge updates."},
+    {"id": "2025-zep", "title": "Zep", "year": 2025, "added": "2026-10-27", "topics": ["memory-structures", "updating-and-forgetting", "evaluating-memory", "memory-vs-long-context"], "oneLine": "A temporal knowledge graph that retires old facts with a valid-time; beats full context on LongMemEval."},
+    {"id": "2025-a-mem", "title": "A-MEM", "year": 2025, "added": "2026-10-20", "topics": ["memory-structures", "updating-and-forgetting", "evaluating-memory"], "oneLine": "Zettelkasten-style linked notes that the LLM keeps rewriting."},
+    {"id": "2025-mem0", "title": "Mem0", "year": 2025, "added": "2026-10-28", "topics": ["memory-structures", "updating-and-forgetting", "evaluating-memory", "memory-vs-long-context"], "oneLine": "Extracted facts with ADD, UPDATE, DELETE, and NOOP decided by the LLM; full context still scores higher on LoCoMo."}
+  ],
+  "connections": [
+    {"from": "2024-locomo", "to": "2023-generative-agents", "type": "builds-on", "note": "Uses its memory and reflection to generate the conversations."},
+    {"from": "2023-memorybank", "to": "2023-generative-agents", "type": "alternative-to", "note": "Both let old memories fade: a forgetting curve here, a recency score there."},
+    {"from": "2023-memgpt", "to": "2023-generative-agents", "type": "alternative-to", "note": "Lets the LLM manage memory instead of a fixed scoring formula."},
+    {"from": "2025-a-mem", "to": "2023-memorybank", "type": "compared-with", "note": "MemoryBank is an A-MEM baseline on LoCoMo."},
+    {"from": "2025-mem0", "to": "2023-memorybank", "type": "compared-with", "note": "Reprints A-MEM's MemoryBank numbers."},
+    {"from": "2024-longmemeval", "to": "2023-memorybank", "type": "critiques", "note": "Its 194 questions don't test synthesis across sessions, knowledge updates, or abstention."},
+    {"from": "2025-zep", "to": "2023-memgpt", "type": "compared-with", "note": "Reports MemGPT's DMR score next to its own."},
+    {"from": "2025-zep", "to": "2023-memgpt", "type": "critiques", "note": "Argues DMR is a weak test."},
+    {"from": "2025-a-mem", "to": "2023-memgpt", "type": "compared-with", "note": "MemGPT is a baseline on LoCoMo."},
+    {"from": "2025-mem0", "to": "2023-memgpt", "type": "compared-with", "note": "Reprints A-MEM's MemGPT numbers."},
+    {"from": "2025-a-mem", "to": "2024-locomo", "type": "evaluated-on", "note": "The main evaluation, with F1 and BLEU-1."},
+    {"from": "2025-mem0", "to": "2024-locomo", "type": "evaluated-on", "note": "The only evaluation, without the adversarial category and with an LLM judge."},
+    {"from": "2024-longmemeval", "to": "2024-locomo", "type": "critiques", "note": "Doesn't test recall of what the assistant said or updated user information."},
+    {"from": "2025-zep", "to": "2024-longmemeval", "type": "evaluated-on", "note": "LongMemEval_S, with gpt-4o and gpt-4o-mini."},
+    {"from": "2025-mem0", "to": "2025-zep", "type": "compared-with", "note": "Runs Zep on LoCoMo; Zep leads only on open-domain questions."},
+    {"from": "2025-mem0", "to": "2025-a-mem", "type": "compared-with", "note": "Re-runs A-MEM at temperature 0, with lower scores than A-MEM reported."},
+    {"from": "2025-a-mem", "to": "2025-mem0", "type": "disagrees-with", "note": "The same LoCoMo numbers under different category names."},
+    {"from": "2025-a-mem", "to": "2025-mem0", "type": "critiques", "note": "Groups Mem0's graph memory with predefined-schema systems."}
+  ],
+  "readingList": [
+    {"title": "Beyond Goldfish Memory: Long-Term Open-Domain Conversation", "authors": "Xu et al., 2021", "url": "https://arxiv.org/abs/2107.07567", "why": "Multi-Session Chat: MemGPT builds DMR on it, LoCoMo's personas come from it, and LongMemEval compares against it."},
+    {"title": "A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts", "authors": "Lee et al., 2024", "url": "https://arxiv.org/abs/2402.09727", "why": "ReadAgent: a baseline in A-MEM and Mem0."},
+    {"title": "DialSim", "authors": "Kim et al., 2024", "url": "https://arxiv.org/abs/2406.13144", "why": "A-MEM's second benchmark, and one LongMemEval compares against."}
+  ]
+}

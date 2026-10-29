@@ -2,6 +2,8 @@
 
 What happens to a memory when time passes or a newer fact contradicts it. This is the question my own work is on.
 
+**Status:** Thin evidence
+
 ## Where it stands
 
 The papers fall into three groups. [Generative Agents](../papers/2023-generative-agents.md) and [MemoryBank](../papers/2023-memorybank.md) never resolve a changed fact; old memories only fade, by a recency score or a forgetting curve. [MemGPT](../papers/2023-memgpt.md) and [A-MEM](../papers/2025-a-mem.md) let the LLM rewrite memory, but neither tests whether it gets a changed fact right. [Mem0](../papers/2025-mem0.md) and [Zep](../papers/2025-zep.md) make updates explicit: Mem0's LLM chooses UPDATE or DELETE, while Zep and Mem0^g mark the old fact invalid instead of deleting it.
