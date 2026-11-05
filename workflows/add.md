@@ -16,7 +16,7 @@ If the paper already has a page, tell me and stop. The exception is a new versio
 
 Read the full paper, not just the abstract: the method and experiments in full, and the related work to see how it places itself. If you can only get the abstract, write the page from it and say so on the page.
 
-While reading, note what it cites, compares against, or evaluates on that's already in the wiki, and the papers it builds on most that aren't.
+While reading, note what it cites, compares against, or evaluates on that's already in the wiki.
 
 ## Write the paper page
 
@@ -45,7 +45,7 @@ Save it to `wiki/papers/<year>-<short-name>.md`:
 * **Results:** the main findings, each with the paper's own numbers and the setting they belong to. Include an ablation when it shows what actually matters.
 * **Limits:** the limits the authors state, then any you see, labeled "My inference".
 * **Ideas worth reusing:** one to three mechanisms from the paper that could work elsewhere, one line each: `* **<Name>:** <the mechanism, general enough to reuse>`. If one only works under a condition, say so in a sentence, like "Needs strong function calling". When another paper in the wiki has the same idea, use the same name on both pages and mention the other paper.
-* **For my work:** one to three lines on what it means for what I'm working on, as described in profile.md. This part is inference by nature, so it needs no label. If the paper doesn't bear on my work, say so in one line.
+* **For my work:** one to three lines on what it means for what I'm working on, as described in profile.md and my notes. This part is inference by nature, so it needs no label. If the paper doesn't bear on my work, say so in one line.
 * **Connections:** typed links to other paper pages, one line each. The types are in [AGENTS.md](../AGENTS.md#connections).
 
 ## Connect it
@@ -83,7 +83,7 @@ A topic page looks like this:
 
 ## Update the index
 
-Add the paper to the papers table, and update a topic's line if its picture changed. Update the reading list: add the papers this one builds on most that aren't in the wiki, and take this paper off the list if it was there.
+Add the paper to the papers table, and update a topic's line if its picture changed.
 
 Then check "Where I could dig in": the two to five open questions and limits in the wiki that bear most on "What I'm working on" in profile.md. Each one starts with a bold title of six to eight words that says the gap on its own, then whether it's an open question or a limit, then the full sentence with a link to its topic or paper. Rewrite the list when the new paper answers one, or raises one that matters more.
 
@@ -97,4 +97,4 @@ For setup or a batch of papers, first read them all and write every paper page w
 
 ## Tell me
 
-In a few sentences: what the paper does, which topics it landed in, and its most interesting connection, especially when it disagrees with something in the wiki or bears on my work. Link the paper page. Don't list every file you changed.
+In a few sentences: what the paper does, which topics it landed in, and its most interesting connection, especially when it disagrees with something in the wiki or bears on my work. When it bears on an idea in my notes, like an experiment I planned that it has now run, say so; change the note only after I agree. Link the paper page. Don't list every file you changed.

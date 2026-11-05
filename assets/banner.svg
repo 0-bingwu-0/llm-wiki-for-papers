@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2172 724" width="2172" height="724">
+  <!-- Line art on a transparent background: soft warm-gray strokes, objects in coral, yellow, green, and white.
+       From left to right: the papers, the wiki they become, my notes, and the research partner.
+       Everything sits between y 230 and 520, inside the band the dashboard shows after cropping (about 195 to 555). -->
+  <g fill="none" stroke="#6b665f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 18)">
+
+    <!-- The line everything stands on -->
+    <path d="M 180 500 H 1995"/>
+
+    <g transform="translate(30 0)">
+
+      <!-- The papers: a file holder full of them -->
+      <g>
+        <g transform="rotate(-10 310 340)">
+          <rect x="256" y="266" width="116" height="156" rx="6" fill="#ffffff"/>
+          <path d="M 274 296 H 346 M 274 320 H 336 M 274 344 H 350" stroke-width="4"/>
+        </g>
+        <g transform="rotate(3 350 330)">
+          <rect x="292" y="246" width="118" height="176" rx="6" fill="#ffffff"/>
+          <rect x="308" y="264" width="70" height="14" rx="5" fill="#e58283" stroke-width="3.6"/>
+          <path d="M 308 300 H 392 M 308 324 H 382 M 308 348 H 394" stroke-width="4"/>
+        </g>
+        <g transform="rotate(12 384 350)">
+          <rect x="334" y="282" width="106" height="150" rx="6" fill="#ffffff"/>
+          <path d="M 350 312 H 418 M 350 336 H 408" stroke-width="4"/>
+          <rect x="350" y="352" width="62" height="14" rx="4" fill="#cee7aa" stroke-width="3.6"/>
+        </g>
+        <path d="M 240 500 V 398 L 440 356 V 500 Z" fill="#f2e49d"/>
+        <rect x="304" y="428" width="76" height="34" rx="6" fill="#ffffff" stroke-width="4.5"/>
+        <path d="M 318 445 H 366" stroke-width="4"/>
+      </g>
+
+      <!-- The wiki: a felt board on an easel, with cards pinned up and string running between the pins -->
+      <g>
+        <!-- the easel's legs, behind the board -->
+        <g transform="translate(860 196) rotate(117.76)"><rect x="-6" y="-9" width="346" height="18" rx="6" fill="#f2e49d" stroke-width="4.5"/></g>
+        <g transform="translate(860 196) rotate(62.24)"><rect x="-6" y="-9" width="346" height="18" rx="6" fill="#f2e49d" stroke-width="4.5"/></g>
+        <circle cx="860" cy="196" r="10" fill="#f2e49d" stroke-width="4.5"/>
+        <!-- the board: a white frame around green felt, on a ledge -->
+        <rect x="540" y="210" width="640" height="242" rx="12" fill="#ffffff"/>
+        <rect x="560" y="230" width="600" height="202" rx="6" fill="#cee7aa" stroke-width="4"/>
+        <g stroke="none" fill="#6b665f" opacity="0.2">
+          <circle cx="759" cy="269" r="2.2"/><circle cx="947" cy="255" r="2.2"/><circle cx="881" cy="307" r="2.2"/><circle cx="605" cy="332" r="2.2"/><circle cx="612" cy="258" r="2.2"/><circle cx="817" cy="389" r="2.2"/><circle cx="933" cy="411" r="2.2"/><circle cx="1134" cy="250" r="2.2"/><circle cx="1066" cy="294" r="2.2"/><circle cx="655" cy="263" r="2.2"/><circle cx="750" cy="387" r="2.2"/><circle cx="676" cy="346" r="2.2"/><circle cx="940" cy="308" r="2.2"/><circle cx="888" cy="253" r="2.2"/><circle cx="753" cy="346" r="2.2"/><circle cx="833" cy="295" r="2.2"/><circle cx="1030" cy="366" r="2.2"/><circle cx="875" cy="398" r="2.2"/><circle cx="992" cy="293" r="2.2"/><circle cx="972" cy="348" r="2.2"/><circle cx="1056" cy="410" r="2.2"/><circle cx="845" cy="360" r="2.2"/><circle cx="606" cy="379" r="2.2"/><circle cx="1121" cy="365" r="2.2"/><circle cx="572" cy="269" r="2.2"/><circle cx="717" cy="304" r="2.2"/><circle cx="1123" cy="322" r="2.2"/><circle cx="1112" cy="418" r="2.2"/><circle cx="656" cy="389" r="2.2"/><circle cx="975" cy="398" r="2.2"/><circle cx="698" cy="412" r="2.2"/><circle cx="801" cy="329" r="2.2"/><circle cx="988" cy="245" r="2.2"/><circle cx="901" cy="367" r="2.2"/><circle cx="716" cy="245" r="2.2"/><circle cx="1073" cy="361" r="2.2"/><circle cx="649" cy="306" r="2.2"/><circle cx="1075" cy="246" r="2.2"/><circle cx="1011" cy="416" r="2.2"/><circle cx="796" cy="248" r="2.2"/><circle cx="579" cy="411" r="2.2"/><circle cx="1109" cy="284" r="2.2"/><circle cx="1028" cy="324" r="2.2"/><circle cx="1026" cy="270" r="2.2"/><circle cx="782" cy="418" r="2.2"/><circle cx="839" cy="244" r="2.2"/>
+        </g>
+        <rect x="548" y="452" width="624" height="16" rx="5" fill="#f2e49d" stroke-width="4.5"/>
+        <!-- the cards, each a little crooked -->
+        <g stroke-width="3.6">
+          <g transform="rotate(-4 646 297)">
+            <rect x="588" y="262" width="116" height="70" rx="4" fill="#ffffff"/>
+            <rect x="602" y="286" width="50" height="10" rx="5" fill="#e58283" stroke-width="3"/>
+            <g stroke="none" fill="#6b665f" opacity="0.35"><rect x="602" y="304" width="88" height="7" rx="3.5"/><rect x="602" y="316" width="62" height="7" rx="3.5"/></g>
+          </g>
+          <g transform="rotate(3 848 283)">
+            <rect x="790" y="248" width="116" height="70" rx="4" fill="#ffffff"/>
+            <rect x="804" y="272" width="50" height="10" rx="5" fill="#f2e49d" stroke-width="3"/>
+            <g stroke="none" fill="#6b665f" opacity="0.35"><rect x="804" y="290" width="88" height="7" rx="3.5"/><rect x="804" y="302" width="62" height="7" rx="3.5"/></g>
+          </g>
+          <g transform="rotate(-3 1058 301)">
+            <rect x="1000" y="266" width="116" height="70" rx="4" fill="#ffffff"/>
+            <rect x="1014" y="290" width="50" height="10" rx="5" fill="#cee7aa" stroke-width="3"/>
+            <g stroke="none" fill="#6b665f" opacity="0.35"><rect x="1014" y="308" width="88" height="7" rx="3.5"/><rect x="1014" y="320" width="62" height="7" rx="3.5"/></g>
+          </g>
+          <g transform="rotate(3 738 381)">
+            <rect x="680" y="346" width="116" height="70" rx="4" fill="#ffffff"/>
+            <rect x="694" y="370" width="50" height="10" rx="5" fill="#f2e49d" stroke-width="3"/>
+            <g stroke="none" fill="#6b665f" opacity="0.35"><rect x="694" y="388" width="88" height="7" rx="3.5"/><rect x="694" y="400" width="62" height="7" rx="3.5"/></g>
+          </g>
+          <g transform="rotate(-4 958 383)">
+            <rect x="900" y="348" width="116" height="70" rx="4" fill="#ffffff"/>
+            <rect x="914" y="372" width="50" height="10" rx="5" fill="#e58283" stroke-width="3"/>
+            <g stroke="none" fill="#6b665f" opacity="0.35"><rect x="914" y="390" width="88" height="7" rx="3.5"/><rect x="914" y="402" width="62" height="7" rx="3.5"/></g>
+          </g>
+        </g>
+        <!-- string from pin to pin, sagging a little -->
+        <path d="M 644 272 Q 746 282 849 258 Q 953 282 1057 276 M 644 272 Q 684 322 739 356 Q 848 372 956 358 Q 906 318 849 258" stroke="#e58283" stroke-width="4"/>
+        <!-- push pins -->
+        <g stroke-width="3.6">
+          <circle cx="644" cy="272" r="9" fill="#f2e49d"/>
+          <circle cx="849" cy="258" r="9" fill="#e58283"/>
+          <circle cx="1057" cy="276" r="9" fill="#f2e49d"/>
+          <circle cx="739" cy="356" r="9" fill="#e58283"/>
+          <circle cx="956" cy="358" r="9" fill="#f2e49d"/>
+        </g>
+        <g stroke="none" fill="#ffffff">
+          <circle cx="641" cy="269" r="2.5"/><circle cx="846" cy="255" r="2.5"/><circle cx="1054" cy="273" r="2.5"/><circle cx="736" cy="353" r="2.5"/><circle cx="953" cy="355" r="2.5"/>
+        </g>
+      </g>
+
+      <!-- My notes: a spiral notebook with a sticky note, and a pencil leaning on it -->
+      <g>
+        <rect x="1290" y="258" width="160" height="242" rx="12" fill="#e58283"/>
+        <rect x="1428" y="258" width="12" height="242" fill="#f2e49d" stroke-width="4"/>
+        <g fill="#ffffff" stroke-width="4">
+          <rect x="1307" y="244" width="10" height="28" rx="5"/>
+          <rect x="1335" y="244" width="10" height="28" rx="5"/>
+          <rect x="1363" y="244" width="10" height="28" rx="5"/>
+          <rect x="1391" y="244" width="10" height="28" rx="5"/>
+        </g>
+        <rect x="1318" y="306" width="96" height="56" rx="6" fill="#ffffff" stroke-width="4.5"/>
+        <path d="M 1334 326 H 1398 M 1334 344 H 1384" stroke-width="4"/>
+        <g transform="rotate(-6 1352 430)">
+          <rect x="1316" y="396" width="70" height="66" rx="4" fill="#f2e49d" stroke-width="4"/>
+          <path d="M 1330 420 H 1372 M 1330 438 H 1362" stroke-width="3.6"/>
+        </g>
+        <g transform="translate(1514 495) rotate(-111)">
+          <rect x="0" y="-12" width="24" height="24" rx="4" fill="#e58283"/>
+          <rect x="24" y="-12" width="126" height="24" fill="#f2e49d"/>
+          <path d="M 150 -12 L 178 0 L 150 12 Z" fill="#ffffff"/>
+          <path d="M 170 -3.5 L 178 0 L 170 3.5 Z" fill="#6b665f"/>
+        </g>
+      </g>
+
+      <!-- The research partner: an owl in glasses, sitting on two books -->
+      <g>
+        <rect x="1606" y="466" width="252" height="34" rx="6" fill="#e58283"/>
+        <path d="M 1632 466 V 500" stroke-width="4.5"/>
+        <rect x="1628" y="432" width="204" height="34" rx="6" fill="#cee7aa"/>
+        <path d="M 1806 432 V 466" stroke-width="4.5"/>
+        <path d="M 1662 312 L 1666 258 L 1702 280 Q 1728 272 1754 280 L 1790 258 L 1794 312 C 1806 340 1808 372 1804 396 C 1798 424 1770 434 1728 434 C 1686 434 1658 424 1652 396 C 1648 372 1650 340 1662 312 Z" fill="#f2e49d"/>
+        <path d="M 1670 352 C 1654 378 1660 408 1684 420 M 1786 352 C 1802 378 1796 408 1772 420" stroke-width="4.5"/>
+        <ellipse cx="1728" cy="400" rx="38" ry="28" fill="#ffffff" stroke-width="4"/>
+        <path d="M 1704 392 l 5 6 l 5 -6 M 1723 392 l 5 6 l 5 -6 M 1742 392 l 5 6 l 5 -6 M 1713 407 l 5 6 l 5 -6 M 1733 407 l 5 6 l 5 -6" stroke-width="3.3"/>
+        <ellipse cx="1678" cy="356" rx="11" ry="7" fill="#e58283" stroke="none"/>
+        <ellipse cx="1778" cy="356" rx="11" ry="7" fill="#e58283" stroke="none"/>
+        <!-- round glasses, eyes on the page -->
+        <circle cx="1700" cy="322" r="25" fill="#ffffff"/>
+        <circle cx="1756" cy="322" r="25" fill="#ffffff"/>
+        <path d="M 1725 318 Q 1728 311 1731 318" stroke-width="4.5"/>
+        <circle cx="1705" cy="328" r="8" fill="#6b665f" stroke="none"/>
+        <circle cx="1751" cy="328" r="8" fill="#6b665f" stroke="none"/>
+        <path d="M 1719 352 H 1737 L 1728 366 Z" fill="#e58283" stroke-width="4"/>
+        <ellipse cx="1710" cy="436" rx="12" ry="6" fill="#e58283" stroke-width="4"/>
+        <ellipse cx="1746" cy="436" rx="12" ry="6" fill="#e58283" stroke-width="4"/>
+        <!-- sparkles -->
+        <path d="M 1610 270 L 1616 286 L 1632 292 L 1616 298 L 1610 314 L 1604 298 L 1588 292 L 1604 286 Z" fill="#f2e49d" stroke-width="3.6"/>
+        <path d="M 1846 276 L 1850 286 L 1860 290 L 1850 294 L 1846 304 L 1842 294 L 1832 290 L 1842 286 Z" fill="#cee7aa" stroke-width="3.3"/>
+      </g>
+    </g>
+  </g>
+</svg>

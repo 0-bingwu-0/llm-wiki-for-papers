@@ -32,11 +32,3 @@ Open questions and limits in the wiki that bear on what I'm working on:
 | [Zep](papers/2025-zep.md) | arXiv, Jan 2025 | A temporal knowledge graph that retires old facts with a valid-time; beats full context on LongMemEval | Organized, Updating, Evaluating, Long context |
 | [A-MEM](papers/2025-a-mem.md) | NeurIPS 2025 | Zettelkasten-style linked notes that the LLM keeps rewriting | Organized, Updating, Evaluating |
 | [Mem0](papers/2025-mem0.md) | arXiv, Apr 2025 | Extracted facts with ADD, UPDATE, DELETE, and NOOP decided by the LLM; full context still scores higher on LoCoMo | Organized, Updating, Evaluating, Long context |
-
-## Reading list
-
-Papers that several papers here build on or compare with, but that aren't in the wiki yet:
-
-* [Beyond Goldfish Memory: Long-Term Open-Domain Conversation](https://arxiv.org/abs/2107.07567) (Xu et al., 2021), the Multi-Session Chat dataset: MemGPT builds DMR on it, LoCoMo's personas come from it, and LongMemEval compares against it.
-* [A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts](https://arxiv.org/abs/2402.09727) (Lee et al., 2024), ReadAgent: a baseline in A-MEM and Mem0.
-* [DialSim](https://arxiv.org/abs/2406.13144) (Kim et al., 2024): A-MEM's second benchmark, and one LongMemEval compares against.

@@ -76,22 +76,18 @@
 
   .page { max-width: 1400px; margin: 0 auto; padding: 0 72px 120px; }
   .page-icon { display: block; width: 104px; height: 104px; margin: 44px 0 0 -4px; font-size: 88px; line-height: 104px; user-select: none; }
-  .title { margin: 18px 0 14px; font-size: 40px; font-weight: 700; line-height: 1.2; }
-  /* Header: title and focus on the left; on the right, a sticky note with what to say in Chat, pinned like the notes in the banner */
-  .head { display: grid; grid-template-columns: minmax(0, 66fr) minmax(0, 34fr); gap: 40px; align-items: start; margin: 0 0 30px; }
-  .head-main { min-width: 0; }
-  .head-main .title { margin-bottom: 14px; }
-  .callout.focus { display: inline-flex; max-width: 100%; }
-  .note { position: relative; margin-top: -4px; padding: 14px 16px 12px; border-radius: 4px; background: #fffaf0; color: #3d3a32; box-shadow: 0 0 0 1px rgba(60, 50, 20, 0.08), 0 6px 16px rgba(60, 50, 20, 0.1); }
-  .note::before { content: ""; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; border-radius: 50%; background: #d9686a; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); transform: translateX(-50%); }
-  .note h3 { margin: 0 0 6px; color: var(--muted); font-size: 12px; font-weight: 600; }
-  .note p { margin: 0; font-size: 14px; line-height: 1.4; }
-  .note p + p { margin-top: 6px; }
-  .note strong { font-weight: 600; }
-  .note span { color: var(--muted); }
+  .title { margin: 18px 0 10px; font-size: 40px; font-weight: 700; line-height: 1.2; }
+  /* Header: the title, then what to say in Chat on one line */
+  .head { margin: 0 0 30px; }
+  .say { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0; color: var(--muted); font-size: 14px; }
+  .say b { height: 24px; padding: 0 8px; border-radius: 4px; background: var(--hover); color: var(--text); font-weight: 500; line-height: 24px; white-space: nowrap; }
+  /* Left, the wiki: topics and papers. Right, me: my progress and what I'm working on. */
   .columns { display: grid; grid-template-columns: minmax(0, 66fr) minmax(0, 34fr); gap: 40px; align-items: start; }
-  .col { min-width: 0; }
-  .section + .section { margin-top: 44px; }
+  /* Sections stack with a gap, so a hidden one leaves no space */
+  .col { display: flex; flex-direction: column; gap: 44px; min-width: 0; }
+  .focus { margin: 12px 0 0; padding-left: 22px; font-size: 15px; }
+  .focus li + li { margin-top: 6px; }
+  .focus li::marker { color: var(--faint); }
 
   /* Callouts */
   .callout { display: flex; align-items: center; gap: 10px; padding: 12px 16px 12px 14px; border-radius: 6px; background: var(--c-gray); }
@@ -102,7 +98,6 @@
   .callout h2 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.3; }
   .callout p { margin: 0; }
   .emoji { width: 22px; flex: none; font-size: 18px; line-height: 1; text-align: center; }
-  .desc { margin: 10px 2px 6px; color: var(--muted); font-size: 14px; }
   /* A table right under a heading callout keeps the same gap as one under a toolbar */
   .callout + #topics { margin-top: 12px; }
 
@@ -159,18 +154,13 @@
   .gr-area { fill: var(--c-blue); }
   .gr-line { fill: none; stroke: var(--d-blue); stroke-width: 2; stroke-linejoin: round; }
   .gr-dot { fill: var(--d-blue); stroke: var(--bg); stroke-width: 1.5; }
-  .gr-total { fill: var(--text); font-size: 12px; font-weight: 600; }
   .gr-axis { fill: var(--faint); font-size: 10px; }
 
-  /* Read next */
-  .rows { margin-top: 8px; border-top: 1px solid var(--line); }
-  .row-item { padding: 10px 6px; border-bottom: 1px solid var(--line); font-size: 15px; }
-  .row-meta { margin-top: 4px; font-size: 14px; }
-  .clamp1 { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .clamp2 { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-
   @media (max-width: 1040px) {
-    .columns, .head { grid-template-columns: minmax(0, 1fr); }
+    .columns { grid-template-columns: minmax(0, 1fr); }
+    /* In one column, what I'm working on comes first, as a subtitle, and progress last */
+    .col { display: contents; }
+    #focus-section { order: -1; }
     .page { padding: 0 40px 96px; }
   }
   @media (max-width: 640px) {
@@ -187,18 +177,15 @@
     <button type="button" id="toast-close" aria-label="Close" title="Close">×</button>
   </div>
 
-  <section class="banner" aria-label="Illustration of a research desk with books, a magnifying glass, and linked notes">
-    <img src="./assets/banner.png" width="2171" height="724" alt="" fetchpriority="high" decoding="async">
+  <section class="banner" aria-label="Illustration of papers in a file holder, a felt board of pinned cards linked by string, a notebook, and an owl in glasses sitting on books">
+    <img src="./assets/banner.svg" width="2172" height="724" alt="" fetchpriority="high" decoding="async">
   </section>
 
   <main class="page">
     <div class="page-icon" role="img" aria-label="Open book">📖</div>
     <div class="head">
-      <div class="head-main">
-        <h1 class="title" id="area"></h1>
-        <div class="callout focus" id="focus"></div>
-      </div>
-      <aside class="note" id="start" aria-label="What to say in Chat"></aside>
+      <h1 class="title" id="area"></h1>
+      <p class="say" id="start"></p>
     </div>
 
     <div class="columns">
@@ -224,9 +211,9 @@
           <div id="progress"></div>
         </section>
 
-        <section class="section" aria-labelledby="h-next">
-          <div class="callout green"><span class="emoji" aria-hidden="true">📚</span><h2 id="h-next">Read next</h2></div>
-          <div class="rows" id="next"></div>
+        <section class="section" id="focus-section" aria-labelledby="h-focus">
+          <div class="callout green"><span class="emoji" aria-hidden="true">🎯</span><h2 id="h-focus">What I'm working on</h2></div>
+          <ul class="focus" id="focus"></ul>
         </section>
       </div>
     </div>
@@ -254,13 +241,14 @@
     "alternative-to": { label: "Alternative to", reverse: "Alternative to", k: "gray" },
   };
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  // Icons are Lucide's "list", "circle-dot", "arrow-up-down", and "file" (lucide.dev, ISC License).
   const PATHS = {
-    list: '<path d="M6 4.5h7.5M6 8h7.5M6 11.5h7.5M2.8 4.5h.4M2.8 8h.4M2.8 11.5h.4"/>',
-    status: '<circle cx="8" cy="8" r="5.8"/><circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>',
-    sort: '<path d="M5 13V3M2.5 5.5 5 3l2.5 2.5M11 3v10M8.5 10.5 11 13l2.5-2.5"/>',
-    file: '<path d="M4 2h5l3 3v9H4z M9 2v3h3"/>',
+    list: '<path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/>',
+    status: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="1"/>',
+    sort: '<path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>',
+    file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/>',
   };
-  const icon = (name) => `<svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PATHS[name]}</svg>`;
+  const icon = (name) => `<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PATHS[name]}</svg>`;
 
   const $ = (selector) => document.querySelector(selector);
   const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -268,6 +256,8 @@
   const arr = (value) => (Array.isArray(value) ? value : []);
   const str = (value) => (typeof value === "string" ? value : "");
   const isDate = (s) => typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s);
+  // A paper's year is the start of its id, like 2025 in 2025-zep.
+  const yearOf = (id) => { const m = /^(\d{4})-/.exec(id); return m ? Number(m[1]) : null; };
   const tag = (o, status) => `<span class="tag${status ? " status" : ""} k-${o.k}">${esc(o.label)}</span>`;
   const paperHref = (id) => `wiki/papers/${encodeURIComponent(id)}.md`;
   const topicHref = (id) => `wiki/topics/${encodeURIComponent(id)}.md`;
@@ -280,7 +270,7 @@
       order,
       id: str(p.id),
       title: str(p.title) || str(p.id),
-      year: Number.isFinite(p.year) ? p.year : null,
+      year: yearOf(str(p.id)),
       added: isDate(p.added) ? p.added : "",
       topics: arr(p.topics).filter((t) => typeof t === "string"),
       oneLine: str(p.oneLine),
@@ -290,11 +280,11 @@
       ...src,
       area: str(src.area) || "Research wiki",
       example: src.example === true,
-      focus: str(src.focus),
+      // A few short lines; a single sentence also works.
+      focus: (typeof src.focus === "string" ? [src.focus] : arr(src.focus)).map(str).filter(Boolean),
       papers,
       topics: arr(src.topics).filter(isObj).map((t) => ({ ...t, id: str(t.id), name: str(t.name) || str(t.id), status: STATUS[t.status] ? t.status : "thin", standing: str(t.standing) })).filter((t) => t.id),
       connections: arr(src.connections).filter((c) => isObj(c) && ids.has(c.from) && ids.has(c.to) && CONN[c.type]).map((c) => ({ ...c, note: str(c.note) })),
-      readingList: arr(src.readingList).filter(isObj).map((r) => ({ ...r, title: str(r.title), authors: str(r.authors), url: str(r.url), why: str(r.why) })).filter((r) => r.title),
     };
   }
 
@@ -311,20 +301,14 @@
   function render() {
     document.title = data.area;
     $("#area").textContent = data.area;
-    $("#focus").innerHTML = data.focus
-      ? `<span class="emoji" aria-hidden="true">🎯</span><p><strong>What I'm working on:</strong> ${esc(data.focus)}</p>`
-      : "";
-    $("#focus").hidden = !data.focus;
-    // "Set me up" only while the template's example is still here; adding papers stays.
-    const steps = [
-      data.example && ["Set me up.", "Swap this example for your own area and papers."],
-      ["Add the new papers.", "Drop PDFs into library/ first, or paste arXiv links."],
-    ].filter(Boolean);
-    $("#start").innerHTML = `<h3>Say in Chat</h3>${steps.map(([say, what]) => `<p><strong>“${esc(say)}”</strong> <span>${esc(what)}</span></p>`).join("")}`;
+    $("#focus").innerHTML = data.focus.map((line) => `<li>${esc(line)}</li>`).join("");
+    $("#focus-section").hidden = !data.focus.length;
+    // "Set me up" only while the template's example is still here.
+    const steps = [data.example && "Set me up.", "Add the new papers.", "Add arxiv.org/abs/…", "How do … and … compare?", "What should I read next?"].filter(Boolean);
+    $("#start").innerHTML = `<span aria-hidden="true">💬</span><span>Say in Chat</span>${steps.map((say) => `<b>“${esc(say)}”</b>`).join("")}`;
     renderTopics();
     renderPapers();
     renderProgress();
-    renderNext();
   }
 
   // One row per topic: how settled it is and which papers speak to it.
@@ -396,7 +380,7 @@
 
   function growthSvg(points) {
     if (!points.length) return "";
-    const w = 320, h = 96, padX = 6, top = 16, bottom = 20;
+    const w = 320, h = 88, padX = 6, top = 8, bottom = 20;
     const time = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d).getTime(); };
     const t0 = time(points[0].date);
     const t1 = time(points[points.length - 1].date);
@@ -411,7 +395,6 @@
       <polygon class="gr-area" points="${x(points[0].date).toFixed(1)},${base} ${line} ${x(end.date).toFixed(1)},${base}"/>
       <polyline class="gr-line" points="${line}"/>
       ${points.map((p) => `<circle class="gr-dot" cx="${x(p.date).toFixed(1)}" cy="${y(p.total).toFixed(1)}" r="3"><title>${label(p.date)}: ${p.total}</title></circle>`).join("")}
-      <text class="gr-total" x="${x(end.date).toFixed(1)}" y="${(y(end.total) - 7).toFixed(1)}" text-anchor="end">${max}</text>
       <text class="gr-axis" x="${padX}" y="${h - 4}">${label(points[0].date)}</text>
       ${points.length > 1 ? `<text class="gr-axis" x="${w - padX}" y="${h - 4}" text-anchor="end">${label(end.date)}</text>` : ""}
     </svg>`;
@@ -425,13 +408,6 @@
         <div class="stat"><span>Connections</span><b>${data.connections.length}</b></div>
       </div>
       ${points.length ? `<div class="growth"><div class="growth-head">Papers over time</div>${growthSvg(points)}</div>` : ""}`;
-  }
-
-  function renderNext() {
-    $("#next").innerHTML = data.readingList.map((r) => `<div class="row-item">
-        <span class="clamp1" title="${esc(r.title)}">${r.url ? `<a class="link" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}</span>
-        <div class="row-meta muted clamp2">${r.authors ? `${esc(r.authors)} · ` : ""}${esc(r.why)}</div>
-      </div>`).join("") || '<p class="desc">Nothing on the list yet.</p>';
   }
 
   // Clicking a paper row (anywhere but its links) marks its connections; clicking it again, or elsewhere, clears them.

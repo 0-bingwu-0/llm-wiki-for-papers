@@ -10,11 +10,11 @@ As the wiki grows, it drifts. Pages written early don't know about later papers,
 * **Topics to add or split:** a theme that comes up on several paper pages without a topic of its own, and topics that have grown too big or cover two questions.
 * **Shaky claims:** numbers without their setting, numbers from different papers lined up as if comparable, unlabeled inferences, and topic claims without a link. Spot-check a few against the papers.
 * **Abstract-only pages:** check whether the full paper is now available.
-* **The reading list:** papers that several wiki papers cite or build on but that aren't in the wiki. Rank them by how many wiki papers point to them.
 * **For my work:** if "What I'm working on" in profile.md has changed since pages were written, update those lines, and "Where I could dig in" on the index.
 * **Ideas:** the same idea under two names on different pages, and papers whose ideas section is missing.
-* **The dashboard:** every topic, paper, connection, and the reading list in `assets/wiki.json` match the pages and the index, as in [maintain.md](maintain.md).
+* **My notes:** links to pages that were renamed or removed, and ideas the wiki has since answered or undercut, like an experiment a new paper already ran. Fix the links; tell me about the ideas.
+* **The dashboard:** every topic, paper, and connection in `assets/wiki.json` matches the pages and the index, as in [maintain.md](maintain.md).
 
 ## Fix and report
 
-Fix what doesn't need my call. Then tell me in a few sentences what you fixed and the two or three papers most worth adding next. Of what does need my call, such as merging two topics, ask only the most important one.
+Fix what doesn't need my call. Then tell me in a few sentences what you fixed and the two or three papers most worth adding next, found as in [ask.md](ask.md#what-to-read-next). Of what does need my call, such as merging two topics, ask only the most important one.

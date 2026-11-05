@@ -10,6 +10,11 @@ I'm a second-year PhD student in NLP. My area is memory for LLM agents: how agen
 
 Memory that stays correct when facts change. Users move, switch jobs, and change their minds, and an assistant that confidently recalls the old fact is worse than one that forgets it. I want to know how existing systems decide that a new memory updates or replaces an old one, how they keep track of time, and how well benchmarks test this.
 
+Right now:
+
+* Comparing retire, delete, and decay on facts that change more than once.
+* Scoring the update step itself, not only the final answer.
+
 ## How to explain papers to me
 
 * I know the basics of the field: RAG, embeddings, long-context models, LLM-as-a-judge evaluation. Skip background I'd know.
